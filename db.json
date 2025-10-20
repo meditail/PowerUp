@@ -8,7 +8,7 @@
     {
       "id": "u2",
       "name": "Jürgen",
-      "lastPlan": ""
+      "lastPlan": "Starter Plan"
     },
     {
       "id": "u3",
@@ -132,293 +132,158 @@
           "metric": "time"
         }
       ]
+    },
+    {
+      "id": "p4",
+      "name": "Starter Plan",
+      "userId": "u2",
+      "exercises": [
+        {
+          "id": "ex17",
+          "name": "C1",
+          "sets": 3,
+          "metric": "weightedReps"
+        },
+        {
+          "id": "ex18",
+          "name": "C3",
+          "sets": 3,
+          "metric": "weightedReps"
+        },
+        {
+          "id": "ex20",
+          "name": "D2",
+          "sets": 3,
+          "metric": "weightedReps"
+        },
+        {
+          "id": "ex19",
+          "name": "E3",
+          "sets": 3,
+          "metric": "weightedReps"
+        },
+        {
+          "id": "ex16",
+          "name": "C4",
+          "sets": 3,
+          "metric": "weightedReps"
+        },
+        {
+          "id": "ex21",
+          "name": "Plank",
+          "sets": 3,
+          "metric": "time"
+        },
+        {
+          "id": "ex22",
+          "name": "Beinheben",
+          "sets": 3,
+          "metric": "reps"
+        }
+      ]
     }
   ],
   "exerciseLogs": [
     {
-      "id": "de83",
-      "userId": "u1",
-      "exerciseId": "ex6",
-      "createdAt": "2025-10-18T12:13:30.667Z",
+      "id": "4372",
+      "createdAt": "2025-10-20T08:38:01.999Z",
+      "userId": "u2",
+      "exerciseId": "ex17",
       "reps": [
-        5,
-        4,
-        4,
-        2
-      ]
-    },
-    {
-      "id": "d54c",
-      "userId": "u1",
-      "exerciseId": "ex1",
-      "createdAt": "2025-10-18T12:16:45.027Z",
-      "time": [
-        30,
-        25,
-        20
-      ]
-    },
-    {
-      "id": "b2e4",
-      "userId": "u1",
-      "exerciseId": "ex2",
-      "createdAt": "2025-10-18T12:16:54.954Z",
-      "reps": [
-        10,
-        9,
-        8,
-        6
-      ]
-    },
-    {
-      "id": "7d2e",
-      "userId": "u1",
-      "exerciseId": "ex3",
-      "createdAt": "2025-10-18T12:17:10.581Z",
-      "reps": [
-        10,
-        10,
+        12,
+        12,
         10
       ],
       "weight": [
-        10,
-        7,
-        6
+        60,
+        60,
+        60
       ]
     },
     {
-      "id": "070b",
-      "userId": "u1",
-      "exerciseId": "ex4",
-      "createdAt": "2025-10-18T12:17:15.936Z",
+      "id": "913c",
+      "createdAt": "2025-10-20T08:38:50.319Z",
+      "userId": "u2",
+      "exerciseId": "ex18",
       "reps": [
-        5,
-        5,
-        5
-      ]
-    },
-    {
-      "id": "d97f",
-      "userId": "u1",
-      "exerciseId": "ex5",
-      "createdAt": "2025-10-18T12:17:21.521Z",
-      "time": [
-        30,
-        30,
-        25
-      ]
-    },
-    {
-      "id": "3ed2",
-      "userId": "u1",
-      "exerciseId": "ex1",
-      "createdAt": "2025-10-18T12:17:59.109Z",
-      "time": [
+        12,
+        12,
+        12
+      ],
+      "weight": [
         35,
-        27,
-        25
+        35,
+        35
       ]
     },
     {
-      "id": "ab57",
-      "userId": "u1",
-      "exerciseId": "ex1",
-      "createdAt": "2025-10-18T12:19:15.938Z",
-      "time": [
+      "id": "ecf4",
+      "createdAt": "2025-10-20T08:39:51.080Z",
+      "userId": "u2",
+      "exerciseId": "ex20",
+      "reps": [
+        12,
+        10,
+        6
+      ],
+      "weight": [
         40,
+        40,
+        40
+      ]
+    },
+    {
+      "id": "3b22",
+      "createdAt": "2025-10-20T08:40:17.851Z",
+      "userId": "u2",
+      "exerciseId": "ex19",
+      "reps": [
+        12,
+        12,
+        10
+      ],
+      "weight": [
+        30,
         30,
         30
       ]
     },
     {
-      "id": "9796",
-      "userId": "u1",
-      "exerciseId": "ex1",
-      "createdAt": "2025-10-18T12:21:48.114Z",
-      "time": [
-        45,
-        40,
-        35
-      ]
-    },
-    {
-      "id": "8e85",
-      "userId": "u1",
-      "exerciseId": "ex6",
-      "createdAt": "2025-10-18T12:22:50.081Z",
+      "id": "fbc8",
+      "createdAt": "2025-10-20T08:40:37.480Z",
+      "userId": "u2",
+      "exerciseId": "ex16",
       "reps": [
-        6,
-        5,
-        4,
-        3
-      ]
-    },
-    {
-      "id": "0640",
-      "userId": "u1",
-      "exerciseId": "ex7",
-      "createdAt": "2025-10-18T12:23:02.215Z",
-      "reps": [
-        7,
-        4,
-        3
-      ]
-    },
-    {
-      "id": "b63e",
-      "userId": "u1",
-      "exerciseId": "ex8",
-      "createdAt": "2025-10-18T12:23:22.038Z",
-      "reps": [
-        10,
-        10,
-        10
+        12,
+        12,
+        12
       ],
       "weight": [
-        10,
-        9,
-        8
-      ]
-    },
-    {
-      "id": "92eb",
-      "userId": "u1",
-      "exerciseId": "ex9",
-      "createdAt": "2025-10-18T12:23:27.983Z",
-      "reps": [
-        10,
-        10,
-        9
-      ]
-    },
-    {
-      "id": "0ffc",
-      "userId": "u1",
-      "exerciseId": "ex6",
-      "createdAt": "2025-10-18T12:24:04.094Z",
-      "reps": [
-        10,
-        9,
-        8,
-        8
-      ]
-    },
-    {
-      "id": "34f8",
-      "userId": "u1",
-      "exerciseId": "ex7",
-      "createdAt": "2025-10-18T12:24:10.457Z",
-      "reps": [
-        11,
-        11,
-        11
-      ]
-    },
-    {
-      "id": "50d6",
-      "userId": "u1",
-      "exerciseId": "ex1",
-      "createdAt": "2025-10-19T10:48:42.345Z",
-      "time": [
-        30,
-        3,
+        0,
+        0,
         0
       ]
     },
     {
-      "id": "ee37",
-      "userId": "u1",
-      "exerciseId": "ex2",
-      "createdAt": "2025-10-19T10:48:48.719Z",
-      "reps": [
-        4,
-        4,
-        4,
-        4
-      ]
-    },
-    {
-      "id": "05a0",
-      "userId": "u1",
-      "exerciseId": "ex1",
-      "createdAt": "2025-10-19T10:59:24.112Z",
+      "id": "1f1a",
+      "createdAt": "2025-10-20T08:41:06.263Z",
+      "userId": "u2",
+      "exerciseId": "ex21",
       "time": [
-        1,
-        2,
-        3
+        40,
+        35,
+        30
       ]
     },
     {
-      "id": "a94b",
-      "userId": "u1",
-      "exerciseId": "ex2",
-      "createdAt": "2025-10-19T10:59:31.237Z",
+      "id": "8427",
+      "createdAt": "2025-10-20T08:41:14.805Z",
+      "userId": "u2",
+      "exerciseId": "ex22",
       "reps": [
-        2,
-        2,
-        2,
-        2
-      ]
-    },
-    {
-      "id": "7114",
-      "userId": "u1",
-      "exerciseId": "ex1",
-      "createdAt": "2025-10-19T11:05:53.297Z",
-      "time": [
-        30,
-        50,
-        60
-      ]
-    },
-    {
-      "id": "36a2",
-      "userId": "u1",
-      "exerciseId": "ex2",
-      "createdAt": "2025-10-19T11:06:06.843Z",
-      "reps": [
-        1,
-        2,
-        3,
-        4
-      ]
-    },
-    {
-      "id": "3f26",
-      "userId": "u1",
-      "exerciseId": "ex3",
-      "createdAt": "2025-10-19T11:06:24.731Z",
-      "reps": [
-        10,
-        2,
-        1
-      ],
-      "weight": [
-        10,
-        10,
-        10
-      ]
-    },
-    {
-      "id": "d2f8",
-      "userId": "u1",
-      "exerciseId": "ex4",
-      "createdAt": "2025-10-19T11:06:32.918Z",
-      "reps": [
-        1,
-        2,
-        3
-      ]
-    },
-    {
-      "id": "1306",
-      "userId": "u1",
-      "exerciseId": "ex5",
-      "createdAt": "2025-10-19T11:06:37.246Z",
-      "time": [
-        1,
-        2,
-        3
+        9,
+        0,
+        0
       ]
     }
   ]

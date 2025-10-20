@@ -1,0 +1,42 @@
+<div class="exercise-name" *ngIf="exercise">
+  {{ exercise.name }} (Letzten {{ cutLogsAt }})
+</div>
+
+<div class="exercise-log" *ngIf="exerciseLogs">
+  <div
+    *ngFor="
+      let exerciseLog of exerciseLogs.slice(
+        exerciseLogs.length - cutLogsAt,
+        exerciseLogs.length
+      )
+    "
+    class="row"
+  >
+    <ng-container *ngIf="exerciseLog.time">
+      <div
+        class="badge"
+        *ngFor="let _ of getRange(exercise.sets); let i = index"
+      >
+        {{ exerciseLog.time![i] }} s
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="exerciseLog.weight && exerciseLog.reps">
+      <div
+        class="badge"
+        *ngFor="let _ of getRange(exercise.sets); let i = index"
+      >
+        {{ exerciseLog.reps[i] }} mit {{ exerciseLog.weight[i] }} kg
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="exerciseLog.reps && !exerciseLog.weight">
+      <div
+        class="badge"
+        *ngFor="let _ of getRange(exercise.sets); let i = index"
+      >
+        {{ exerciseLog.reps![i] }}
+      </div>
+    </ng-container>
+  </div>
+</div>

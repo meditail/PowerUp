@@ -1,0 +1,24 @@
+<form class="form" #form="ngForm">
+  <div class="inputs-container">
+    <div *ngFor="let _ of getRange(); let i = index" class="inputs">
+      <label>
+        <span>Set {{ i + 1 }}</span>
+        <input class="input" type="number" required name="set{{ i }}" ngModel />
+      </label>
+      <label *ngIf="metric === 'weightedReps'">
+        <span>Gewicht {{ i + 1 }}</span>
+        <input
+          class="input"
+          type="number"
+          required
+          name="weight{{ i }}"
+          ngModel
+        />
+      </label>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn--red" (click)="handleStopWorkout()">Beenden</button>
+    <button class="btn" (click)="handleCreate(form)">Speichern</button>
+  </div>
+</form>

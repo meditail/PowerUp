@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../service/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Exercise, ExerciseLog, TrainingPlan } from '../../../interface';
-import { NgIf, NgForOf, JsonPipe } from '@angular/common';
-import { of, startWith, switchMap } from 'rxjs';
-import { FormsModule, NgForm } from '@angular/forms';
+import { NgIf } from '@angular/common';
+import { of, switchMap } from 'rxjs';
+import { ExerciseLogListComponent } from '../../component/exercise-log-list/exercise-log-list.component';
+import { ExerciseLogFormComponent } from '../../component/exercise-log-form/exercise-log-form.component';
 
 @Component({
   selector: 'app-workout',
-  imports: [FormsModule, NgIf, NgForOf],
+  imports: [NgIf, ExerciseLogFormComponent, ExerciseLogListComponent],
   templateUrl: './workout.component.html',
   styleUrl: './workout.component.scss',
 })
@@ -53,73 +54,37 @@ export class WorkoutComponent implements OnInit {
       });
   }
 
-  getRange(n: number) {
-    return Array.from({ length: n });
-  }
+  saveWorkout(newExerciseLog: ExerciseLog) {
+    const userId = this.route.snapshot.paramMap.get('userId')!;
 
-  private loadExercise() {
-    const userId = this.route.snapshot.paramMap.get('userId') ?? '-1';
+    newExerciseLog.userId = userId;
+    newExerciseLog.exerciseId = this.selectedExercise.id;
 
-    this.selectedExercise =
-      this.trainingPlan.exercises[this.selectedExerciseIndex];
     this.apiService
-      .getExerciseLogsByUserIdAndExerciseId(userId, this.selectedExercise.id)
+      .saveExerciseLog(newExerciseLog)
+      .pipe(
+        switchMap(() => {
+          this.selectedExerciseIndex++;
+          if (this.selectedExerciseIndex < this.trainingPlan.exercises.length) {
+            this.selectedExercise =
+              this.trainingPlan.exercises[this.selectedExerciseIndex];
+            return this.apiService.getExerciseLogsByUserIdAndExerciseId(
+              userId,
+              this.selectedExercise.id
+            );
+          }
+          alert('Workout abgeschlossen');
+          this.router.navigate(['dashboard', userId]);
+          return of();
+        })
+      )
       .subscribe({
         next: (exerciseLogs) => (this.exerciseLogs = exerciseLogs),
       });
   }
 
-  saveWorkout(form: NgForm) {
-    if (form.valid) {
-      const userId = this.route.snapshot.paramMap.get('userId')!;
-
-      let setValues = Object.keys(form.form.value)
-        .filter((key) => key.startsWith('set') || key.startsWith('reps'))
-        .map((key) => form.form.value[key]);
-
-      let weights = Object.keys(form.form.value)
-        .filter((key) => key.startsWith('weight'))
-        .map((key) => form.form.value[key]);
-
-      let newExerciseLog: ExerciseLog = {
-        userId,
-        exerciseId: this.selectedExercise.id,
-        createdAt: new Date(),
-      };
-
-      switch (this.selectedExercise.metric) {
-        case 'reps':
-          newExerciseLog.reps = setValues;
-          break;
-        case 'time':
-          newExerciseLog.time = setValues;
-          break;
-        case 'weightedReps':
-          newExerciseLog.reps = setValues;
-          newExerciseLog.weight = weights;
-          break;
-      }
-
-      this.apiService.saveExerciseLog(newExerciseLog).subscribe(() => {
-        this.selectedExerciseIndex++;
-        if (this.selectedExerciseIndex < this.trainingPlan.exercises.length) {
-          this.loadExercise();
-          form.resetForm();
-        } else {
-          alert('Workout abgeschlossen');
-          this.router.navigate(['dashboard', userId]);
-        }
-      });
-    } else {
-      form.form.markAllAsTouched();
-    }
-  }
-
-  stopWorkoutSession() {
-    let stop = confirm('Workout wirklich beenden?');
-    if (stop) {
-      const userId = this.route.snapshot.paramMap.get('userId')!;
-      this.router.navigate(['dashboard', userId]);
-    }
+  stopWorkout() {
+    const userId = this.route.snapshot.paramMap.get('userId')!;
+    this.router.navigate(['dashboard', userId]);
   }
 }

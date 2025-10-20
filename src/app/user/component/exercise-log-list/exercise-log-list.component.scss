@@ -1,0 +1,31 @@
+.exercise {
+  &-name {
+    font-size: 20px;
+    padding-bottom: 10px;
+  }
+
+  &-log {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.row {
+  background-color: var(--color-surface);
+  display: flex;
+  height: 50px;
+  gap: 20px;
+  border-radius: 10px;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.badge {
+  display: flex;
+  min-width: 40px;
+  justify-content: center;
+  background-color: var(--color-accent);
+  padding: 5px;
+  border-radius: 10px;
+}

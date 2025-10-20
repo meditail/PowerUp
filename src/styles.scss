@@ -61,3 +61,8 @@ a {
     outline: none;
   }
 }
+
+form .ng-invalid.ng-touched {
+  background: #ffe7e7;
+  border-color: #c0392b;
+}
