@@ -1,0 +1,107 @@
+<div *ngIf="trainingPlan; else loading" class="training">
+  <h2 class="training__title">{{ trainingPlan.name }}</h2>
+
+  <h3 class="exercise-form__title">
+    Aktuelle Übung: {{ selectedExercise.name }}
+  </h3>
+
+  <div class="training__logs">
+    <div *ngFor="let exerciseLog of exerciseLogs" class="exercise-log">
+      <div class="exercise-log__metrics">
+        <ng-container *ngIf="exerciseLog.reps?.length">
+          <span *ngFor="let rep of exerciseLog.reps" class="metric">
+            {{ rep }}x
+          </span>
+        </ng-container>
+
+        <ng-container *ngIf="exerciseLog.weight?.length">
+          <span *ngFor="let weight of exerciseLog.weight" class="metric">
+            {{ weight }} kg
+          </span>
+        </ng-container>
+
+        <ng-container *ngIf="exerciseLog.time?.length">
+          <span *ngFor="let time of exerciseLog.time" class="metric">
+            {{ time }} s
+          </span>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p class="loading">Laden...</p>
+</ng-template>
+
+<div *ngIf="selectedExercise" class="exercise-form">
+  <form #form="ngForm" class="form">
+    <div
+      *ngFor="let _ of getRange(selectedExercise.sets); let i = index"
+      class="form__set"
+    >
+      <!-- Zeitbasiert -->
+      <div *ngIf="selectedExercise.metric === 'time'" class="form__group">
+        <label>
+          <span>Set {{ i + 1 }} – Sekunden</span>
+          <input
+            class="input"
+            type="number"
+            required
+            name="set{{ i }}"
+            ngModel
+          />
+        </label>
+      </div>
+
+      <div *ngIf="selectedExercise.metric === 'reps'" class="form__group">
+        <label>
+          <span>Set {{ i + 1 }} – Wiederholungen</span>
+          <input
+            class="input"
+            type="number"
+            required
+            name="set{{ i }}"
+            ngModel
+          />
+        </label>
+      </div>
+
+      <div
+        *ngIf="selectedExercise.metric === 'weightedReps'"
+        class="form__group form__group--dual"
+      >
+        <label>
+          <span>Set {{ i + 1 }} – Wiederholungen</span>
+          <input
+            class="input"
+            type="number"
+            required
+            name="reps{{ i }}"
+            ngModel
+          />
+        </label>
+
+        <label>
+          <span>Set {{ i + 1 }} – Gewicht (kg)</span>
+          <input
+            class="input"
+            type="number"
+            required
+            name="weight{{ i }}"
+            ngModel
+          />
+        </label>
+      </div>
+    </div>
+
+    <div class="form__actions">
+      <button class="btn btn--red" (click)="stopWorkoutSession()">
+        Training Beenden
+      </button>
+      <button class="btn" (click)="saveWorkout(form)">
+        Speichern & Weiter
+      </button>
+    </div>
+  </form>
+</div>

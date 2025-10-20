@@ -1,0 +1,19 @@
+<div class="plan">
+  <div class="plan-header">
+    <div>Dein Trainingsplan</div>
+  </div>
+  <div class="plan-content">
+    <div>
+      <select [(ngModel)]="selectedPlan" (change)="onChange()" class="input">
+        <option *ngFor="let plan of trainingPlans" [ngValue]="plan">
+          {{ plan.name }}
+        </option>
+      </select>
+    </div>
+    <div class="plan-list">
+      <div *ngFor="let exercise of selectedPlan?.exercises">
+        {{ exercise.name }}
+      </div>
+    </div>
+  </div>
+</div>

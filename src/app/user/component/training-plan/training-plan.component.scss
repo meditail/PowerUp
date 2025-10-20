@@ -1,0 +1,17 @@
+.plan {
+  background-color: var(--color-surface);
+  padding: 20px;
+  border-radius: 10px;
+
+  &-content {
+    margin-top: 20px;
+    display: block;
+  }
+
+  &-list {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

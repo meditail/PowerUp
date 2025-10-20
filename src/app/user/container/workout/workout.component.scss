@@ -1,0 +1,111 @@
+.training {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+
+  &__title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  &__logs {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+}
+
+.exercise-log {
+  background: var(--color-surface);
+  padding: 1rem 1.2rem;
+  border-radius: 0.8rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+
+  &__name {
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    .metric {
+      background: var(--color-accent);
+      padding: 0.3rem 0.7rem;
+      border-radius: 0.4rem;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.exercise-form {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+
+  &__title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
+    &__set {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    &__group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+
+      &--dual {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      label {
+        display: flex;
+        flex-direction: column;
+        font-size: 0.95rem;
+
+        span {
+          margin-bottom: 0.3rem;
+          font-weight: 500;
+        }
+
+        .input {
+          padding: 0.5rem 0.75rem;
+          border: 1px solid #ccc;
+          border-radius: 0.5rem;
+          font-size: 1rem;
+          transition: border-color 0.2s ease;
+
+          &:focus {
+            border-color: #007bff;
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.loading {
+  font-style: italic;
+  color: #666;
+  text-align: center;
+  padding: 1rem;
+}

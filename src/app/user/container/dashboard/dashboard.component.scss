@@ -1,0 +1,25 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+  gap: 20px;
+
+  .personal {
+    margin-top: 20px;
+    background-color: var(--color-surface);
+    padding: 20px;
+    border-radius: 10px;
+
+    .greetings {
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+
+  .progress {
+    background-color: var(--color-surface);
+    padding: 20px;
+    border-radius: 10px;
+  }
+}

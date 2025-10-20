@@ -1,0 +1,7 @@
+<div class="title">Wähle Dein Profil</div>
+
+<div class="card" *ngFor="let user of users" (click)="selectUser(user.id)">
+  <div class="card-body">
+    {{ user.name }}
+  </div>
+</div>

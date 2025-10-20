@@ -1,0 +1,16 @@
+<div class="layout">
+  <div class="personal">
+    <div class="greetings" *ngIf="user">Hallo {{ user.name }}</div>
+    <div class="info" *ngIf="user">
+      Letzter Trainingsplan {{ user.lastPlan }}
+    </div>
+  </div>
+
+  <app-training-plan
+    [trainingPlans]="plans"
+    [selectedPlan]="selectedPlan"
+    (planSelected)="selectOnChange($event)"
+  ></app-training-plan>
+
+  <button class="btn" (click)="startWorkout()">Training Starten</button>
+</div>
