@@ -17,8 +17,6 @@ export class ExerciseLogFormComponent {
   @Output() endWorkout = new EventEmitter();
 
   getRange() {
-    console.log(this.sets);
-
     return Array.from({ length: this.sets });
   }
 
