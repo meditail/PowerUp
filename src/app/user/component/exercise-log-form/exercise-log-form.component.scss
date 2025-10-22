@@ -18,5 +18,10 @@
     padding-top: 40px;
     display: flex;
     justify-content: space-between;
+
+    .red-actions {
+      display: flex;
+      gap: 20px;
+    }
   }
 }

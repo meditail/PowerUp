@@ -15,6 +15,7 @@ export class ExerciseLogFormComponent {
 
   @Output() createExerciseLog = new EventEmitter<ExerciseLog>();
   @Output() endWorkout = new EventEmitter();
+  @Output() skipExercise = new EventEmitter();
 
   getRange() {
     return Array.from({ length: this.sets });
@@ -60,6 +61,12 @@ export class ExerciseLogFormComponent {
   handleStopWorkout() {
     if (confirm('Workout Beenden?')) {
       this.endWorkout.emit();
+    }
+  }
+
+  handleSkipExercise() {
+    if (confirm('Übung überspringen?')) {
+      this.skipExercise.emit();
     }
   }
 }

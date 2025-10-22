@@ -3,7 +3,7 @@ import { ApiService } from '../../service/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Exercise, ExerciseLog, TrainingPlan } from '../../../interface';
 import { NgIf } from '@angular/common';
-import { of, switchMap } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 import { ExerciseLogListComponent } from '../../component/exercise-log-list/exercise-log-list.component';
 import { ExerciseLogFormComponent } from '../../component/exercise-log-form/exercise-log-form.component';
 
@@ -54,6 +54,24 @@ export class WorkoutComponent implements OnInit {
       });
   }
 
+  nextExercise(): Observable<ExerciseLog[]> {
+    const userId = this.route.snapshot.paramMap.get('userId')!;
+    this.selectedExerciseIndex++;
+
+    if (this.selectedExerciseIndex < this.trainingPlan.exercises.length) {
+      this.selectedExercise =
+        this.trainingPlan.exercises[this.selectedExerciseIndex];
+      return this.apiService.getExerciseLogsByUserIdAndExerciseId(
+        userId,
+        this.selectedExercise.id
+      );
+    } else {
+      alert('Workout abgeschlossen');
+      this.router.navigate(['dashboard', userId]);
+      return of();
+    }
+  }
+
   saveWorkout(newExerciseLog: ExerciseLog) {
     const userId = this.route.snapshot.paramMap.get('userId')!;
 
@@ -62,22 +80,7 @@ export class WorkoutComponent implements OnInit {
 
     this.apiService
       .saveExerciseLog(newExerciseLog)
-      .pipe(
-        switchMap(() => {
-          this.selectedExerciseIndex++;
-          if (this.selectedExerciseIndex < this.trainingPlan.exercises.length) {
-            this.selectedExercise =
-              this.trainingPlan.exercises[this.selectedExerciseIndex];
-            return this.apiService.getExerciseLogsByUserIdAndExerciseId(
-              userId,
-              this.selectedExercise.id
-            );
-          }
-          alert('Workout abgeschlossen');
-          this.router.navigate(['dashboard', userId]);
-          return of();
-        })
-      )
+      .pipe(switchMap(() => this.nextExercise()))
       .subscribe({
         next: (exerciseLogs) => (this.exerciseLogs = exerciseLogs),
       });
@@ -86,5 +89,13 @@ export class WorkoutComponent implements OnInit {
   stopWorkout() {
     const userId = this.route.snapshot.paramMap.get('userId')!;
     this.router.navigate(['dashboard', userId]);
+  }
+
+  skipExercise() {
+    this.nextExercise().subscribe({
+      next: (exerciseLogs) => {
+        if (exerciseLogs) this.exerciseLogs = exerciseLogs;
+      },
+    });
   }
 }
